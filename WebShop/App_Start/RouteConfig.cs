@@ -23,7 +23,7 @@ namespace WebShop
 
             routes.MapRoute(
                 name: "ProductList",
-                url: "lista-produktow/{type}.html",
+                url: "kategoria/{type}.html",
                 defaults: new { controller = "Store", action = "List" }
             );
 
