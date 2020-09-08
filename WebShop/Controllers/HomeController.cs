@@ -15,10 +15,11 @@ namespace WebShop.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Kategoria newKategoria = new Kategoria { Name = "Skarpetki" };
-            db.Kategorie.Add(newKategoria);
-            db.SaveChanges();
+            /*            Kategoria newKategoria = new Kategoria { Name = "Kolorowe" };
+                        db.Kategorie.Add(newKategoria);
+                        db.SaveChanges();*/
 
+            var listaKategori = db.Produkty.ToList();
             return View();
         }
 
