@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebShop.DAL;
 using WebShop.Models;
+using WebShop.ViewModels;
 
 namespace WebShop.Controllers
 {
@@ -15,12 +16,19 @@ namespace WebShop.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            /*            Kategoria newKategoria = new Kategoria { Name = "Kolorowe" };
-                        db.Kategorie.Add(newKategoria);
-                        db.SaveChanges();*/
+            var kategorie = db.Kategorie.ToList();
 
-            var listaKategori = db.Produkty.ToList();
-            return View();
+            var najnowszeProdukty = db.Produkty.Where(a => !a.UkrytyProdukt).OrderByDescending(a => a.DataDodania).Take(8).ToList();
+
+            var vm = new HomeViewModel()
+            {
+                Kategorie = kategorie,
+                NajnowszeProdukty = najnowszeProdukty
+            };
+
+
+
+            return View(vm);
         }
 
         public ActionResult StaticContent(string viewname)

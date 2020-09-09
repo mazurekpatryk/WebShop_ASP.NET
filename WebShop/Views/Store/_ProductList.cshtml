@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebShop.Models.Produkt>
+
+<div class="col-md-12">
+    <!-- Produkty -->
+    <div class="container pt-5 mt-5">
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-5 col-lg-3 mb-3">
+                    <a href="@Url.Action("Details", "Store", new { id = product.ProduktId })">
+                        <div class="card item  shadow-sm">
+
+                            <img src="~/Content/img/@product.NazwaObrazka" class="card-img-top img-fluid" alt="...">
+
+                            <div class="card-body">
+                                <p class="card-title h4">@product.Nazwa</p>
+                                <h3 class="font-weight-light">@product.Cena</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>

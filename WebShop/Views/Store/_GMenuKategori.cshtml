@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebShop.Models.Kategoria>
+
+<div class="col-12">
+    <h1 id="kategorie" class="text-center mt-5 ">Kategorie</h1>
+    <div id="menutop">
+        <ul class="list_shop_categories list-centered">
+            <li class="category_item menu_m text-secondary">
+                <a href="@Url.Content("~/")" class="category_item_link text-uppercase text-decoration-none mt-2 text-overflow">
+                    <span class="category_name">WSZYSTKIE</span>
+                </a>
+            </li>
+            @foreach (var kategoria in Model)
+            {
+
+                <li class="category_item menu_m text-secondary">
+                    <a href="@Url.Action("List", "Store", new { type = kategoria.Name.ToString() })" class="category_item_link text-uppercase text-decoration-none mt-2 text-overflow">
+                        <span class="category_name">@kategoria.Name</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

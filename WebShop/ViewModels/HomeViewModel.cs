@@ -9,5 +9,6 @@ namespace WebShop.ViewModels
     public class HomeViewModel
     {
         public IEnumerable<Kategoria> Kategorie { set; get; }
+        public IEnumerable<Produkt> NajnowszeProdukty { set; get; }
     }
 }

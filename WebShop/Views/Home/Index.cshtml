@@ -1,18 +1,63 @@
-﻿
+﻿@model WebShop.ViewModels.HomeViewModel
+@using WebShop.Infrastructure
+
 @{
     ViewBag.Title = "Index";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
-        
+    <div class="container">
+        <div class="row">
+
+            <!-- Kategorie -->
+            <div class="col-12">
+                <h1 id="kategorie" class="text-center mt-5 ">Kategorie</h1>
+                <div id="menutop">
+                    <ul class="list_shop_categories list-centered">
+                        <li class="category_item menu_m text-secondary">
+                            <a href="@Url.Content("~/")" class="category_item_link text-uppercase text-decoration-none mt-2 text-overflow">
+                                <span class="category_name">WSZYSTKIE</span>
+                            </a>
+                        </li>
+                        @foreach (var kategoria in Model.Kategorie)
+                        {
+
+                            <li class="category_item menu_m text-secondary">
+                                <a href="@Url.Action("List", "Store", new { type = kategoria.Name.ToLower() })" class="category_item_link text-uppercase text-decoration-none mt-2 text-overflow">
+                                    <span class="category_name">@kategoria.Name</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!-- Kategorie -->
+
+
+            <div class="col-md-12">
+                <!-- Produkty -->
+                <div class="container pt-5 mt-5">
+                    <div class="row">
+                        @foreach(var product in Model.NajnowszeProdukty)
+                        {
+                            <div class="col-md-5 col-lg-3 mb-3">
+                                <a href="@Url.Action("Details", "Store", new { id = product.ProduktId })">
+                                    <div class="card item  shadow-sm">
+
+                                        <img src="~/Content/img/@product.NazwaObrazka" class="card-img-top img-fluid" alt="...">
+
+                                        <div class="card-body">
+                                            <p class="card-title h4">@product.Nazwa</p>
+                                            <h3 class="font-weight-light">@product.Cena</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
