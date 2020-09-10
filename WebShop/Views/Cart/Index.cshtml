@@ -1,0 +1,112 @@
+﻿@model WebShop.ViewModels.CartViewModel
+@using WebShop.Infrastructure
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<div class="container">
+
+    @Html.MvcSiteMap().SiteMapPath()
+
+    <table class="table">
+        <thead>
+            <tr @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="" </text>  } else { <text> class="d-none" </text> }>
+                <th scope="col">Produkt</th>
+                <th scope="col"></th>
+                <th scope="col">Ilość</th>
+                <th scope="col">Cena</th>
+                <th scope="col" style="text-align: center;">Usuń</th>
+            </tr>
+        </thead>
+        <tbody @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="" </text>  } else { <text> class="d-none" </text> }>
+            @foreach (var cartItem in Model.CartItems)
+            {
+
+                <tr id="cart-row-@cartItem.Produkt.ProduktId">
+                    <td>
+                        <a href="@Url.Action("Details", "Store", new { id = cartItem.Produkt.ProduktId })">
+                            <img src="@Url.Content(Url.ProductPhotoPath(cartItem.Produkt.NazwaObrazka))" class="card-img-top" alt="Skarpetka" style="height: 100px; width: 100px;">
+                        </a>
+                    </td>
+                    <td class="align-middle"><a href="@Url.Action("Details", "Store", new { id = cartItem.Produkt.ProduktId })">@cartItem.Produkt.Nazwa</a></td>
+                    <td class="align-middle pl-4"><span id="cart-item-count-@cartItem.Produkt.ProduktId">@cartItem.Quantity</span></td>
+                    <td class="align-middle">@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
+                    <td class="align-middle pb-4">
+                        <div class="align-middle">
+                            <a data-id="@cartItem.Produkt.ProduktId" href="#" class="w-100 d-inline btn btn-primary removeProduct">Usuń</a>
+                        </div>
+
+                    </td>
+                </tr>
+            }
+
+        <td colspan="3"></td>
+        <td class="h3"> Suma zakupów:</td>
+        <td class="h3" style="text-align: center;"><span id="total-price-value">@String.Format("{0:0.##}", Model.TotalPrice)</span> zł</td>
+        </tbody>
+    </table>
+
+    <div @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="d-none row" </text>  } else { <text> class="row" </text> }>
+        <div class="col-12 mt-5">
+            <p id="kategorie" class="text-center">BRAK PRODUKTÓW W KOSZYKU!<p>
+        </div>
+        <div class="col-12 d-flex justify-content-center mb-5">
+            <p class="fas fa-times display-1"></p>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-primary btn-lg text-right mr-2 mb-5" href="#">Kontynuuj zakupy</a>
+        @if (Model.TotalPrice > 0)
+        {
+            <a id="cart-button-checkout" class="btn btn-primary btn-lg text-right mr-2 mb-5" href="@Url.Action("Checkout", "Cart")">Kupuję</a>
+        }
+    </div>
+</div>
+
+@section ScriptsBottom{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+
+
+
+    <script>
+        $(function () {
+            $(".removeProduct").click(function () {
+
+                var recordToDelete = $(this).attr("data-id");
+
+                if (recordToDelete != '') {
+
+                    // Send post request with AJAX
+                    $.post("/Cart/RemoveFromCart", { "productID": recordToDelete },
+                        function (response) {
+                            // Success
+                            if (response.RemovedItemCount == 0) {
+
+                                $('#cart-row-' + response.RemoveItemId).fadeOut('slow', function () {
+                                    if (response.CartItemsCount == 0) {
+                                        $("#cart-empty-message").removeClass("hidden");
+                                    }
+                                });
+                            } else {
+                                $('#cart-item-count-' + response.RemoveItemId).text(response.RemovedItemCount);
+                            }
+
+                            if (response.CartItemsCount == 0) {
+                                $('#cart-button-checkout').addClass('hidden');
+                                $('#total-price').addClass('invisible');
+                            }
+
+                            $('#total-price-value').text(response.CartTotal);
+                            $('#cart-header-items-count').text(response.CartItemsCount);
+
+                        });
+
+                    return false;
+                }
+            });
+
+        });</script>
+}
