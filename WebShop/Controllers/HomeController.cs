@@ -18,7 +18,7 @@ namespace WebShop.Controllers
         {
             var kategorie = db.Kategorie.ToList();
 
-            var najnowszeProdukty = db.Produkty.Where(a => !a.UkrytyProdukt).OrderByDescending(a => a.DataDodania).Take(8).ToList();
+            var najnowszeProdukty = db.Produkty.Where(a => !a.UkrytyProdukt).OrderByDescending(a => a.DataDodania).ToList();
 
             var vm = new HomeViewModel()
             {

@@ -8,6 +8,9 @@
 
     <div class="container">
         <div class="row">
+            <div class="col">
+                @Html.MvcSiteMap().SiteMapPath()
+            </div>
             <div class="col text-center">
                 <img src="@Url.ProductPhotoPath(Model.NazwaObrazka)" class="card-img-top" alt="Skarpetka" style="height: 400px; width: 400px;">
             </div>
