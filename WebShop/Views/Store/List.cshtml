@@ -6,5 +6,63 @@
 
 @Html.Action("GMenuKategori")
 
+    <form id="search-form" method="get" data-ajax-target="#productlist-section">
+        <input type="search" name="searchQuery" id="search-filter" data-autocomplete-source="@Url.Action("AlbumSuggestions")"
+               placeholder="Wprowadz tekst" />
+        <input type="submit" value="" />
+    </form>
 
 @Html.Partial("_ProductList")
+
+@section ScriptsBottom{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(function () {
+
+            var ajaxSubmit = function () {
+
+                var $form = $(this);
+
+                var settings = {
+                    data: $(this).serialize(),
+                    url: $(this).attr("action"),
+                    type: $(this).attr("method")
+                };
+
+                $.ajax(settings).done(function (result) {
+                    var $targetElement = $($form.data("ajax-target"));
+                    var $newContent = $(result);
+                    $($targetElement).replaceWith($newContent);
+                    //$newContent.effect("slide");
+                });
+
+                return false;
+            };
+
+
+            var setupAutoComplete = function () {
+                var $input = $(this);
+
+                var options = {
+                    source: $input.attr("data-autocomplete-source"),
+                    select: function (event, ui) {
+                        $input = $(this);
+                        $input.val(ui.item.label);
+                        var $form = $input.parents("form:first");
+                        $form.submit();
+                    }
+                };
+
+                $input.autocomplete(options);
+            };
+
+            $("#search-form").submit(ajaxSubmit);
+            $("#search-filter").each(setupAutoComplete);
+
+        });
+
+    </script>
+}
