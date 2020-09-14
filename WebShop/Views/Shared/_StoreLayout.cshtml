@@ -1,4 +1,4 @@
-﻿  
+﻿@using Microsoft.AspNet.Identity;
 @{
     Layout = null;
 }
@@ -15,14 +15,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/7ddcda0d1c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")"  />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")" />
     <title>@ViewBag.Title</title>
     @System.Web.Optimization.Styles.Render("~/Content/themes/base/css")
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand"href="@Url.Content("~/")">Navbar</a>
+            <a class="navbar-brand" href="@Url.Content("~/")">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -46,6 +46,31 @@
                     </li>
                 </ul>
                 <a>Koszyk @Html.Action("GetCartItemsCount", "Cart")</a>
+                <div id="login-header">
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div>
+                                @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            </div>
+                            <div>
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div>
+                            @Html.ActionLink("Zarejestruj", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+                        </div>
+                        <div>
+                            @Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                        </div>
+                    }
+                </div>
             </div>
         </nav>
     </header>

@@ -17,7 +17,7 @@ namespace WebShop.ViewModels
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+        public class RegisterViewModel
     {
         [Required]
         [EmailAddress]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,7 +8,7 @@ using WebShop.Models;
 
 namespace WebShop.DAL
 {
-    public class StoreContext : DbContext
+    public class StoreContext : IdentityDbContext<ApplicationUser>
     {
         public StoreContext() : base("StoreContext")
         {
@@ -17,9 +18,17 @@ namespace WebShop.DAL
         {
             Database.SetInitializer<StoreContext>(new StoreInitializer());
         }
+
+        public static StoreContext Create()
+        {
+            return new StoreContext();
+        }
+
         public DbSet<Kategoria>Kategorie { get; set; }
         public DbSet<Produkt>Produkty { get; set; }
         public DbSet<Zamowienie> Zamowienia { get; set; }
         public DbSet<ZamowionyProdukt> ZamowioneProdukty { get; set; }
+
+
     }
 }

@@ -9,6 +9,7 @@ namespace WebShop.Models
     public class Zamowienie
     {
         public int ZamowienieId { get; set; }
+        public string UzytkownikId { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
         public string Adres { get; set; }
