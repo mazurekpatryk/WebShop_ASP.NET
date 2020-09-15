@@ -1,0 +1,183 @@
+﻿<error errorId="b9f76f9f-b578-4bd7-9719-9562c2a9e93a" host="DESKTOP-RHBHOPK" type="System.Web.HttpParseException" message="Po znaku &quot;@&quot; napotkano spację lub podział wiersza. Na początku bloku kodu dozwolone są tylko identyfikatory, słowa kluczowe, komentarze oraz znaki &quot;(&quot; i &quot;{&quot;, przy czym muszą one następować bezpośrednio po znaku &quot;@&quot; bez spacji między nimi a tym znakiem.&#xD;&#xA;" source="System.Web.WebPages.Razor" detail="System.Web.HttpParseException (0x80004005): Po znaku &quot;@&quot; napotkano spację lub podział wiersza. Na początku bloku kodu dozwolone są tylko identyfikatory, słowa kluczowe, komentarze oraz znaki &quot;(&quot; i &quot;{&quot;, przy czym muszą one następować bezpośrednio po znaku &quot;@&quot; bez spacji między nimi a tym znakiem.&#xD;&#xA;&#xD;&#xA;   w System.Web.WebPages.Razor.RazorBuildProvider.EnsureGeneratedCode()&#xD;&#xA;   w System.Web.WebPages.Razor.RazorBuildProvider.get_CodeCompilerType()&#xD;&#xA;   w System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)&#xD;&#xA;   w System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()&#xD;&#xA;   w System.Web.Compilation.BuildProvidersCompiler.PerformBuild()&#xD;&#xA;   w System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)&#xD;&#xA;   w System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   w System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   w System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)&#xD;&#xA;   w System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)&#xD;&#xA;   w System.Web.Compilation.BuildManager.GetCompiledType(String virtualPath)&#xD;&#xA;   w System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.GetCompiledType(String virtualPath)&#xD;&#xA;   w System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   w System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   w System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   w System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   w System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   w System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_6.&lt;BeginInvokeAction&gt;b__4()&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_1.&lt;BeginInvokeAction&gt;b__1(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecuteCore&gt;b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecute&gt;b__151_2(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.&lt;&gt;c.&lt;BeginProcessRequest&gt;b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   w System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)&#xD;&#xA;   w System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)" user="admin@admin.pl" time="2020-09-15T22:21:09.1844437Z" statusCode="500" webHostHtmlMessage="&lt;!DOCTYPE html&gt;&#xD;&#xA;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Błąd analizatora składni&lt;/title&gt;&#xD;&#xA;        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Consolas&quot;,&quot;Lucida Console&quot;,Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:pointer; }&#xD;&#xA;         @media screen and (max-width: 639px) {&#xD;&#xA;          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }&#xD;&#xA;         }&#xD;&#xA;         @media screen and (max-width: 479px) {&#xD;&#xA;          pre { width: 280px; }&#xD;&#xA;         }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Błąd serwera w aplikacji '/'.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Błąd analizatora składni&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Opis: &lt;/b&gt;Wystąpił błąd podczas analizowania zasobu wymaganego do obsłużenia tego żądania. Przejrzyj następujące szczegółowe informacje o błędzie analizy i zmodyfikuj odpowiednio źródło.&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Komunikat o błędzie analizatora składni: &lt;/b&gt;Po znaku &amp;quot;@&amp;quot; napotkano spację lub podział wiersza. Na początku bloku kodu dozwolone są tylko identyfikatory, słowa kluczowe, komentarze oraz znaki &amp;quot;(&amp;quot; i &amp;quot;{&amp;quot;, przy czym muszą one następować bezpośrednio po znaku &amp;quot;@&amp;quot; bez spacji między nimi a tym znakiem.&lt;br&gt;&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Błąd źródła:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;Wiersz 7:      &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;&#xD;&#xA;Wiersz 8:          &amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;&#xD;&#xA;&lt;font color=red&gt;Wiersz 9:              &amp;lt;a class = &amp;quot;nav-link h4 btn btn-primary mt-1 mr-2 w-25&amp;quot; href=&amp;quot;@Url.Action(&amp;quot;Index&amp;quot;, &amp;quot;Manage&amp;quot;)&amp;quot;&amp;gt;Twoje dane&amp;lt;/a&amp;gt;*@&#xD;&#xA;&lt;/font&gt;Wiersz 10:             &amp;lt;a class=&amp;quot;nav-link h4 btn btn-primary mt-1 mr-2 w-25&amp;quot; href=&amp;quot;@Url.Action(&amp;quot;OrdersList&amp;quot;, &amp;quot;Manage&amp;quot;)&amp;quot;&amp;gt;Zam&amp;#243;weiania&amp;lt;/a&amp;gt;&#xD;&#xA;Wiersz 11: &lt;/pre&gt;                      &lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Plik źródłowy: &lt;/b&gt; /Views/Manage/Index.cshtml&lt;b&gt; &amp;nbsp;&amp;nbsp; Wiersz: &lt;/b&gt; 9&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;/font&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:close&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=NotW9IIQksVD16VaVa6ZDgP33-s5GH7b3fM8XecZMyxHVsk0qMdAxlVThD3NJArG2NJEZWiph16l_8YDvYs-9ch_idJRqr33-NRdrcSl8ho1; ASP.NET_SessionId=beoacfibnaojgi2arez5iyvg; .AspNet.ApplicationCookie=GMDO0is27gFlh5qSzCsQPCDKNEldDmqiFza-O-IzjbFvyq0ThCXPMGE_NUdJFc8jnETdx_Hx452QAzSWIsLZ91_0LHzI89CE_cXa1OsTDoo5SPDwsSBocvad8N71Hd9oQzHQuKHPo5d2svcK3yEjly5pIz6L9phWmygsWL_qNFieC6tQaOInPmSR-P7T-7_2f57UJPm5ltFG4ytxN4wXJ5SFxH5c-gS5Kzl1wcenBztvPgcNa80EBXZAGTf0XqX8cyR3l4PXFytHWOfZElH1yAwvsu6qJvEuqiyZv84INW4BKsrag4Eih7IWXKy0ezO94VtWZDt_0T6_hV3vpF8MsMRfFgfacdpmdAJobCf9hPr94RVF5VUCp3HMyJhVFC5SwDDPUMD3K1-5LAoJGH52TrC39bjJw3-j3tt9HuFM6T_iYOSspUnOol1AVgtkW8na1A4hQTGCOw1JCynLpNkcQUCwpc5xr1iBSBCtdLC1CTwT3GMQ7L6HRA5erX05Hnlp-HBNB8S_8EZmmusEC69FJA&#xD;&#xA;HTTP_HOST:localhost:44313&#xD;&#xA;HTTP_REFERER:https://localhost:44313/Manage/AddProduct&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;HTTP_SEC_FETCH_SITE:same-origin&#xD;&#xA;HTTP_SEC_FETCH_MODE:navigate&#xD;&#xA;HTTP_SEC_FETCH_USER:?1&#xD;&#xA;HTTP_SEC_FETCH_DEST:document&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: close&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: __RequestVerificationToken=NotW9IIQksVD16VaVa6ZDgP33-s5GH7b3fM8XecZMyxHVsk0qMdAxlVThD3NJArG2NJEZWiph16l_8YDvYs-9ch_idJRqr33-NRdrcSl8ho1; ASP.NET_SessionId=beoacfibnaojgi2arez5iyvg; .AspNet.ApplicationCookie=GMDO0is27gFlh5qSzCsQPCDKNEldDmqiFza-O-IzjbFvyq0ThCXPMGE_NUdJFc8jnETdx_Hx452QAzSWIsLZ91_0LHzI89CE_cXa1OsTDoo5SPDwsSBocvad8N71Hd9oQzHQuKHPo5d2svcK3yEjly5pIz6L9phWmygsWL_qNFieC6tQaOInPmSR-P7T-7_2f57UJPm5ltFG4ytxN4wXJ5SFxH5c-gS5Kzl1wcenBztvPgcNa80EBXZAGTf0XqX8cyR3l4PXFytHWOfZElH1yAwvsu6qJvEuqiyZv84INW4BKsrag4Eih7IWXKy0ezO94VtWZDt_0T6_hV3vpF8MsMRfFgfacdpmdAJobCf9hPr94RVF5VUCp3HMyJhVFC5SwDDPUMD3K1-5LAoJGH52TrC39bjJw3-j3tt9HuFM6T_iYOSspUnOol1AVgtkW8na1A4hQTGCOw1JCynLpNkcQUCwpc5xr1iBSBCtdLC1CTwT3GMQ7L6HRA5erX05Hnlp-HBNB8S_8EZmmusEC69FJA&#xD;&#xA;Host: localhost:44313&#xD;&#xA;Referer: https://localhost:44313/Manage/AddProduct&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36&#xD;&#xA;upgrade-insecure-requests: 1&#xD;&#xA;sec-fetch-site: same-origin&#xD;&#xA;sec-fetch-mode: navigate&#xD;&#xA;sec-fetch-user: ?1&#xD;&#xA;sec-fetch-dest: document&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\Patryk\STUDIA\INF MOJE\semestr 6\BAZY_.NET\Projekt\WebShop_ASP.NET\WebShop\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin@admin.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin@admin.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Manage" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\Patryk\STUDIA\INF MOJE\semestr 6\BAZY_.NET\Projekt\WebShop_ASP.NET\WebShop\Manage" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="1122" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Manage" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44313" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Manage" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=NotW9IIQksVD16VaVa6ZDgP33-s5GH7b3fM8XecZMyxHVsk0qMdAxlVThD3NJArG2NJEZWiph16l_8YDvYs-9ch_idJRqr33-NRdrcSl8ho1; ASP.NET_SessionId=beoacfibnaojgi2arez5iyvg; .AspNet.ApplicationCookie=GMDO0is27gFlh5qSzCsQPCDKNEldDmqiFza-O-IzjbFvyq0ThCXPMGE_NUdJFc8jnETdx_Hx452QAzSWIsLZ91_0LHzI89CE_cXa1OsTDoo5SPDwsSBocvad8N71Hd9oQzHQuKHPo5d2svcK3yEjly5pIz6L9phWmygsWL_qNFieC6tQaOInPmSR-P7T-7_2f57UJPm5ltFG4ytxN4wXJ5SFxH5c-gS5Kzl1wcenBztvPgcNa80EBXZAGTf0XqX8cyR3l4PXFytHWOfZElH1yAwvsu6qJvEuqiyZv84INW4BKsrag4Eih7IWXKy0ezO94VtWZDt_0T6_hV3vpF8MsMRfFgfacdpmdAJobCf9hPr94RVF5VUCp3HMyJhVFC5SwDDPUMD3K1-5LAoJGH52TrC39bjJw3-j3tt9HuFM6T_iYOSspUnOol1AVgtkW8na1A4hQTGCOw1JCynLpNkcQUCwpc5xr1iBSBCtdLC1CTwT3GMQ7L6HRA5erX05Hnlp-HBNB8S_8EZmmusEC69FJA" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44313" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://localhost:44313/Manage/AddProduct" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_SITE">
+      <value string="same-origin" />
+    </item>
+    <item name="HTTP_SEC_FETCH_MODE">
+      <value string="navigate" />
+    </item>
+    <item name="HTTP_SEC_FETCH_USER">
+      <value string="?1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_DEST">
+      <value string="document" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="NotW9IIQksVD16VaVa6ZDgP33-s5GH7b3fM8XecZMyxHVsk0qMdAxlVThD3NJArG2NJEZWiph16l_8YDvYs-9ch_idJRqr33-NRdrcSl8ho1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="beoacfibnaojgi2arez5iyvg" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="GMDO0is27gFlh5qSzCsQPCDKNEldDmqiFza-O-IzjbFvyq0ThCXPMGE_NUdJFc8jnETdx_Hx452QAzSWIsLZ91_0LHzI89CE_cXa1OsTDoo5SPDwsSBocvad8N71Hd9oQzHQuKHPo5d2svcK3yEjly5pIz6L9phWmygsWL_qNFieC6tQaOInPmSR-P7T-7_2f57UJPm5ltFG4ytxN4wXJ5SFxH5c-gS5Kzl1wcenBztvPgcNa80EBXZAGTf0XqX8cyR3l4PXFytHWOfZElH1yAwvsu6qJvEuqiyZv84INW4BKsrag4Eih7IWXKy0ezO94VtWZDt_0T6_hV3vpF8MsMRfFgfacdpmdAJobCf9hPr94RVF5VUCp3HMyJhVFC5SwDDPUMD3K1-5LAoJGH52TrC39bjJw3-j3tt9HuFM6T_iYOSspUnOol1AVgtkW8na1A4hQTGCOw1JCynLpNkcQUCwpc5xr1iBSBCtdLC1CTwT3GMQ7L6HRA5erX05Hnlp-HBNB8S_8EZmmusEC69FJA" />
+    </item>
+  </cookies>
+</error>

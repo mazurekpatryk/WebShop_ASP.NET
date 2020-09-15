@@ -16,6 +16,19 @@
         border-width: 2px;
     }
 
+.qty {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 10px;
+    color: #FFF;
+    background-color: #D10024;
+    float: right;
+    margin-top: -8px;
+    font-family: "arial";
+}
 
 .img-fluid {
     max-width: 100%;
@@ -58,6 +71,8 @@
     right: 25%;
     top: 0%;
 }
+
+
 
 .list-centered, .site-content .list-centered {
     margin-left: 0;

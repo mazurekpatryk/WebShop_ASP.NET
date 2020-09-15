@@ -58,7 +58,7 @@
     </div>
 
     <div class="d-flex justify-content-end">
-        <a class="btn btn-primary btn-lg text-right mr-2 mb-5" href="#">Kontynuuj zakupy</a>
+        <a class="btn btn-primary btn-lg text-right mr-2 mb-5" href="@Url.Content("~/")">Kontynuuj zakupy</a>
         @if (Model.TotalPrice > 0)
         {
             <a id="cart-button-checkout" class="btn btn-primary btn-lg text-right mr-2 mb-5" href="@Url.Action("Checkout", "Cart")">Kupuję</a>

@@ -6,40 +6,39 @@
     Layout = "~/Views/Shared/_StoreLayout.cshtml";
 }
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                @Html.MvcSiteMap().SiteMapPath()
-            </div>
-            <div class="col text-center">
-                <img src="@Url.ProductPhotoPath(Model.NazwaObrazka)" class="card-img-top" alt="Skarpetka" style="height: 400px; width: 400px;">
-            </div>
-            <div class="col">
-                <h1 class="display-4 naglowek mt-5">@Model.Nazwa</h1>
-                <h2 class="mb-3 mt-4 text-primary cena">@String.Format("{0:0.##}", Model.Cena) zł</h2>
+<div class="container">
+    @Html.MvcSiteMap().SiteMapPath()
+    <div class="row">
 
-                <p class="mt-5 lead pr-5 mb-5">@Model.Opis</p>
+        <div class="col text-center">
+            <img src="@Url.ProductPhotoPath(Model.NazwaObrazka)" class="card-img-top" alt="Skarpetka" style="height: 400px; width: 400px;">
+        </div>
+        <div class="col">
+            <h1 class="display-4 naglowek mt-5">@Model.Nazwa</h1>
+            <h2 class="mb-3 mt-4 text-primary cena">@String.Format("{0:0.##}", Model.Cena) zł</h2>
 
-                <form action="dodaj_do_koszyka.php" method="post" class="mb-5">
-                    <div class="form-group">
-                        <div class="def-number-input number-input safari_only">
+            <p class="mt-5 lead pr-5 mb-5">@Model.Opis</p>
 
-                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                            <input class="quantity" name="ilosc" value="1" type="number" id="replyNumber" min="1" max="99" data-bind="value:replyNumber">
-                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                        </div>
+            <form class="mb-5">
+                <div class="form-group">
+                    <div class="def-number-input number-input safari_only">
 
-                        <input type="hidden" name="id_produktu" value="<?php echo $row['Id'] ?>">
-
+                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" name="ilosc" value="1" type="number" id="replyNumber" min="1" max="99" data-bind="value:replyNumber">
+                        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                     </div>
-                    <div class="btn btn-primary ">
-                        <a href="@Url.Action("AddToCart", "Cart", new { id = Model.ProduktId })" class="d-inline-flex btn btn-primary ">Dodaj do koszyka</a>
-                    </div>
-                </form>
-                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                {
-                    <a href="@Url.Action("AddProduct", "Manage", new { albumId = Model.ProduktId })" style="margin-top: 20px; font-weight: bold; display: block;">Edytuj</a>
-                }
-            </div>
+
+                    <input type="hidden" name="id_produktu" value="">
+
+                </div>
+                <div class="">
+                    <a href="@Url.Action("AddToCart", "Cart", new { id = Model.ProduktId })" class=" btn btn-primary w-75">Dodaj do koszyka</a>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("AddProduct", "Manage", new { albumId = Model.ProduktId })" class="nav-link btn btn-primary w-75 mt-2">Edytuj</a>
+                    }
+                </div>
+            </form>
         </div>
     </div>
+</div>

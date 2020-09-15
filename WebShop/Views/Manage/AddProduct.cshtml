@@ -5,95 +5,114 @@
     Layout = "~/Views/Shared/_StoreLayout.cshtml";
 }
 
-<h2>AddProduct</h2>
+<div class="container">
+    <div class="row">
+        <a class="nnav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("Index", "Manage")">Twoje dane</a>
+        <a class="nav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("OrdersList", "Manage")">Zamóweiania</a>
 
-<div>
-    @if (Model.ConfirmSuccess.HasValue && Model.ConfirmSuccess.Value)
-    {
-        <div style="text-align: center; margin: 50px;">
-            Pomyślnie wprowadzono zmiany!
-        </div>
-    }
+        @if (User.IsInRole("Admin"))
+        {
+            <a class="nav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("AddProduct","Manage")">Dodaj</a>
+        }
+    </div>
+    <hr>
+    <h2 style="margin-bottom: 30px">Dodanie produktu</h2>
+    <div class="d-flex justify-content-center bd-highlight">
 
-    @using (@Html.BeginForm("AddProduct", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
+        <div>
+            @if (Model.ConfirmSuccess.HasValue && Model.ConfirmSuccess.Value)
+            {
+                <div style="text-align: center; margin: 50px;">
+                    Pomyślnie wprowadzono zmiany!
+                </div>
+            }
 
-        <div class="error-summary-centered">
-            @Html.ValidationSummary()
-        </div>
+            @using (@Html.BeginForm("AddProduct", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
 
-        @Html.HiddenFor(o => o.Produkt.ProduktId)
-        @Html.HiddenFor(o => o.Produkt.DataDodania)
-        @Html.HiddenFor(o => o.Produkt.NazwaObrazka)
+                <div class="error-summary-centered">
+                    @Html.ValidationSummary()
+                </div>
 
-
-        <div style="text-align: center;">
-            <table id="albumedit-address-table">
-                <tr>
-                    <td>@Html.LabelFor(o => o.Produkt.Nazwa, "Nazwa:")</td>
-                    <td>@Html.TextBoxFor(o => o.Produkt.Nazwa)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Produkt.Nazwa)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(o => o.Produkt.Opis, "Opis:")</td>
-                    <td>@Html.TextBoxFor(o => o.Produkt.Opis)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Produkt.Opis)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(o => o.Kategorie, "Kategoria:")</td>
-                    <td>@Html.DropDownListFor(m => m.Produkt.KategoriaId, new SelectList(Model.Kategorie, "KategoriaId", "Name", Model.Kategorie.First().KategoriaId))</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(o => o.Produkt.Cena, "Cena:")</td>
-                    <td>@Html.TextBoxFor(o => o.Produkt.Cena)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Produkt.Cena)</td>
-                </tr>
-                @if (ViewBag.EditMode == null || !ViewBag.EditMode)
-                {
-                    <tr>
-                        <td colspan="3">
-
-                            <div class="upload">
-                                <input type="file" name="file" />
-                            </div>
-
-                        </td>
-                    </tr>
-                }
-            <tr>
+                @Html.HiddenFor(o => o.Produkt.ProduktId)
+                @Html.HiddenFor(o => o.Produkt.DataDodania)
+                @Html.HiddenFor(o => o.Produkt.NazwaObrazka)
 
 
-
-                <td></td>
-                <td style="text-align: left">
-                    @if (ViewBag.EditMode)
-                    {
-                        if (Model.Produkt.UkrytyProdukt)
+                <div>
+                    <table id="albumedit-address-table">
+                        <tr>
+                            <td>@Html.LabelFor(o => o.Produkt.Nazwa, "Nazwa:")</td>
+                            <td>@Html.TextBoxFor(o => o.Produkt.Nazwa, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(o => o.Produkt.Nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(o => o.Produkt.Opis, "Opis:")</td>
+                            <td>@Html.TextBoxFor(o => o.Produkt.Opis, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(o => o.Produkt.Opis)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(o => o.Kategorie, "Kategoria:")</td>
+                            <td>@Html.DropDownListFor(m => m.Produkt.KategoriaId, new SelectList(Model.Kategorie, "KategoriaId", "Name", Model.Kategorie.First().KategoriaId), new { @class = "custom-select" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(o => o.Produkt.Cena, "Cena:")</td>
+                            <td>@Html.TextBoxFor(o => o.Produkt.Cena, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(o => o.Produkt.Cena)</td>
+                        </tr>
+                        @if (ViewBag.EditMode == null || !ViewBag.EditMode)
                         {
-                            @* A bit dangerous - CSRF. Nested form.. Need to use form attr or JS *@
-                            <a href="@Url.Action("UnhideProduct", "Manage", new { produktId = Model.Produkt.ProduktId })" style="display: block; margin-top: 15px; font-weight: bold;">
-                                Przywróć
-                            </a>
-                        }
-                        else
-                        {
-                            @* A bit dangerous - CSRF. Nested form.. Need to use form attr or JS *@
-                            <a href="@Url.Action("HideProduct", "Manage", new { produktId = Model.Produkt.ProduktId })" style="display: block; margin-top: 15px; font-weight: bold;">
-                                Usuń
-                            </a>
-                        }
-                    }
-                </td>
-                <td style="text-align: right;">
+                            <tr>
+                                <td colspan="3">
 
-                    <input type="submit" value="Zapisz" class="submitLink" style="height: 40px; margin-right: 0px; margin-top: 30px; font-weight: bold;" />
+                                    <div class="upload">
+                                        <input type="file" name="file" />
+                                    </div>
 
-                </td>
-</table>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+
+
+
+
+                            <td>
+                                @if (ViewBag.EditMode)
+                                {
+                                    if (Model.Produkt.UkrytyProdukt)
+                                    {
+                                        @* A bit dangerous - CSRF. Nested form.. Need to use form attr or JS *@
+                                        <a href="@Url.Action("UnhideProduct", "Manage", new { produktId = Model.Produkt.ProduktId })">
+                                            Przywróć
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        @* A bit dangerous - CSRF. Nested form.. Need to use form attr or JS *@
+                                        <a href="@Url.Action("HideProduct", "Manage", new { produktId = Model.Produkt.ProduktId })">
+                                            Usuń
+                                        </a>
+                                    }
+                                }
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" value="Zapisz" class="submitLink nav-link btn btn-primary mt-1 mr-2 w-100 mb-3" />
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
+
         </div>
-    }
-
+    </div>
+    <hr>
 </div>
 

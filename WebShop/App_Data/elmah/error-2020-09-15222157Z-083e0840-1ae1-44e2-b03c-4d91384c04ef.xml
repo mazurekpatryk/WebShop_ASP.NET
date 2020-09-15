@@ -1,0 +1,177 @@
+﻿<error errorId="083e0840-1ae1-44e2-b03c-4d91384c04ef" host="DESKTOP-RHBHOPK" type="System.Web.HttpException" message="Kontroler dla ścieżki /Scripts/jquery-migrate-3.0.0.js nie został znaleziony lub nie implementuje interfejsu IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): Kontroler dla ścieżki /Scripts/jquery-migrate-3.0.0.js nie został znaleziony lub nie implementuje interfejsu IController.&#xD;&#xA;   w System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   w System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   w Castle.Proxies.Invocations.IControllerFactory_CreateController.InvokeMethodOnTarget()&#xD;&#xA;   w Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   w Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   w Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   w Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   w Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   w Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   w Castle.Proxies.IControllerFactoryProxy.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   w System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   w System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   w System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin@admin.pl" time="2020-09-15T22:21:57.8474959Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:close&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=NotW9IIQksVD16VaVa6ZDgP33-s5GH7b3fM8XecZMyxHVsk0qMdAxlVThD3NJArG2NJEZWiph16l_8YDvYs-9ch_idJRqr33-NRdrcSl8ho1; ASP.NET_SessionId=beoacfibnaojgi2arez5iyvg; .AspNet.ApplicationCookie=GMDO0is27gFlh5qSzCsQPCDKNEldDmqiFza-O-IzjbFvyq0ThCXPMGE_NUdJFc8jnETdx_Hx452QAzSWIsLZ91_0LHzI89CE_cXa1OsTDoo5SPDwsSBocvad8N71Hd9oQzHQuKHPo5d2svcK3yEjly5pIz6L9phWmygsWL_qNFieC6tQaOInPmSR-P7T-7_2f57UJPm5ltFG4ytxN4wXJ5SFxH5c-gS5Kzl1wcenBztvPgcNa80EBXZAGTf0XqX8cyR3l4PXFytHWOfZElH1yAwvsu6qJvEuqiyZv84INW4BKsrag4Eih7IWXKy0ezO94VtWZDt_0T6_hV3vpF8MsMRfFgfacdpmdAJobCf9hPr94RVF5VUCp3HMyJhVFC5SwDDPUMD3K1-5LAoJGH52TrC39bjJw3-j3tt9HuFM6T_iYOSspUnOol1AVgtkW8na1A4hQTGCOw1JCynLpNkcQUCwpc5xr1iBSBCtdLC1CTwT3GMQ7L6HRA5erX05Hnlp-HBNB8S_8EZmmusEC69FJA&#xD;&#xA;HTTP_HOST:localhost:44313&#xD;&#xA;HTTP_REFERER:https://localhost:44313/Manage&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36&#xD;&#xA;HTTP_SEC_FETCH_SITE:same-origin&#xD;&#xA;HTTP_SEC_FETCH_MODE:no-cors&#xD;&#xA;HTTP_SEC_FETCH_DEST:script&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: close&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: __RequestVerificationToken=NotW9IIQksVD16VaVa6ZDgP33-s5GH7b3fM8XecZMyxHVsk0qMdAxlVThD3NJArG2NJEZWiph16l_8YDvYs-9ch_idJRqr33-NRdrcSl8ho1; ASP.NET_SessionId=beoacfibnaojgi2arez5iyvg; .AspNet.ApplicationCookie=GMDO0is27gFlh5qSzCsQPCDKNEldDmqiFza-O-IzjbFvyq0ThCXPMGE_NUdJFc8jnETdx_Hx452QAzSWIsLZ91_0LHzI89CE_cXa1OsTDoo5SPDwsSBocvad8N71Hd9oQzHQuKHPo5d2svcK3yEjly5pIz6L9phWmygsWL_qNFieC6tQaOInPmSR-P7T-7_2f57UJPm5ltFG4ytxN4wXJ5SFxH5c-gS5Kzl1wcenBztvPgcNa80EBXZAGTf0XqX8cyR3l4PXFytHWOfZElH1yAwvsu6qJvEuqiyZv84INW4BKsrag4Eih7IWXKy0ezO94VtWZDt_0T6_hV3vpF8MsMRfFgfacdpmdAJobCf9hPr94RVF5VUCp3HMyJhVFC5SwDDPUMD3K1-5LAoJGH52TrC39bjJw3-j3tt9HuFM6T_iYOSspUnOol1AVgtkW8na1A4hQTGCOw1JCynLpNkcQUCwpc5xr1iBSBCtdLC1CTwT3GMQ7L6HRA5erX05Hnlp-HBNB8S_8EZmmusEC69FJA&#xD;&#xA;Host: localhost:44313&#xD;&#xA;Referer: https://localhost:44313/Manage&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36&#xD;&#xA;sec-fetch-site: same-origin&#xD;&#xA;sec-fetch-mode: no-cors&#xD;&#xA;sec-fetch-dest: script&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\Patryk\STUDIA\INF MOJE\semestr 6\BAZY_.NET\Projekt\WebShop_ASP.NET\WebShop\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin@admin.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin@admin.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Scripts/jquery-migrate-3.0.0.js" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\Patryk\STUDIA\INF MOJE\semestr 6\BAZY_.NET\Projekt\WebShop_ASP.NET\WebShop\Scripts\jquery-migrate-3.0.0.js" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="1122" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Scripts/jquery-migrate-3.0.0.js" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44313" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Scripts/jquery-migrate-3.0.0.js" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=NotW9IIQksVD16VaVa6ZDgP33-s5GH7b3fM8XecZMyxHVsk0qMdAxlVThD3NJArG2NJEZWiph16l_8YDvYs-9ch_idJRqr33-NRdrcSl8ho1; ASP.NET_SessionId=beoacfibnaojgi2arez5iyvg; .AspNet.ApplicationCookie=GMDO0is27gFlh5qSzCsQPCDKNEldDmqiFza-O-IzjbFvyq0ThCXPMGE_NUdJFc8jnETdx_Hx452QAzSWIsLZ91_0LHzI89CE_cXa1OsTDoo5SPDwsSBocvad8N71Hd9oQzHQuKHPo5d2svcK3yEjly5pIz6L9phWmygsWL_qNFieC6tQaOInPmSR-P7T-7_2f57UJPm5ltFG4ytxN4wXJ5SFxH5c-gS5Kzl1wcenBztvPgcNa80EBXZAGTf0XqX8cyR3l4PXFytHWOfZElH1yAwvsu6qJvEuqiyZv84INW4BKsrag4Eih7IWXKy0ezO94VtWZDt_0T6_hV3vpF8MsMRfFgfacdpmdAJobCf9hPr94RVF5VUCp3HMyJhVFC5SwDDPUMD3K1-5LAoJGH52TrC39bjJw3-j3tt9HuFM6T_iYOSspUnOol1AVgtkW8na1A4hQTGCOw1JCynLpNkcQUCwpc5xr1iBSBCtdLC1CTwT3GMQ7L6HRA5erX05Hnlp-HBNB8S_8EZmmusEC69FJA" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44313" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://localhost:44313/Manage" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" />
+    </item>
+    <item name="HTTP_SEC_FETCH_SITE">
+      <value string="same-origin" />
+    </item>
+    <item name="HTTP_SEC_FETCH_MODE">
+      <value string="no-cors" />
+    </item>
+    <item name="HTTP_SEC_FETCH_DEST">
+      <value string="script" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="NotW9IIQksVD16VaVa6ZDgP33-s5GH7b3fM8XecZMyxHVsk0qMdAxlVThD3NJArG2NJEZWiph16l_8YDvYs-9ch_idJRqr33-NRdrcSl8ho1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="beoacfibnaojgi2arez5iyvg" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="GMDO0is27gFlh5qSzCsQPCDKNEldDmqiFza-O-IzjbFvyq0ThCXPMGE_NUdJFc8jnETdx_Hx452QAzSWIsLZ91_0LHzI89CE_cXa1OsTDoo5SPDwsSBocvad8N71Hd9oQzHQuKHPo5d2svcK3yEjly5pIz6L9phWmygsWL_qNFieC6tQaOInPmSR-P7T-7_2f57UJPm5ltFG4ytxN4wXJ5SFxH5c-gS5Kzl1wcenBztvPgcNa80EBXZAGTf0XqX8cyR3l4PXFytHWOfZElH1yAwvsu6qJvEuqiyZv84INW4BKsrag4Eih7IWXKy0ezO94VtWZDt_0T6_hV3vpF8MsMRfFgfacdpmdAJobCf9hPr94RVF5VUCp3HMyJhVFC5SwDDPUMD3K1-5LAoJGH52TrC39bjJw3-j3tt9HuFM6T_iYOSspUnOol1AVgtkW8na1A4hQTGCOw1JCynLpNkcQUCwpc5xr1iBSBCtdLC1CTwT3GMQ7L6HRA5erX05Hnlp-HBNB8S_8EZmmusEC69FJA" />
+    </item>
+  </cookies>
+</error>

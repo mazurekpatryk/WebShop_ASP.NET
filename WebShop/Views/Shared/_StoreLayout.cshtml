@@ -18,155 +18,259 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")" />
     <title>@ViewBag.Title</title>
     @System.Web.Optimization.Styles.Render("~/Content/themes/base/css")
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="@Url.Content("~/")">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    @*<header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="@Url.Content("~/")">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="@Url.Content("~/")">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "onas" })">O nas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "kontakt" })">Kontakt</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "wysylka" })">Wysyłka</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "regulamin" })">Regulamin</a>
-                    </li>
-                </ul>
-                <a href="@Url.Action("Index", "Cart")">Koszyk @Html.Action("GetCartItemsCount", "Cart")</a>
-                <div id="login-header">
-                    @if (Request.IsAuthenticated)
-                    {
-                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Content("~/")">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "onas" })">O nas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "kontakt" })">Kontakt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "wysylka" })">Wysyłka</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "regulamin" })">Regulamin</a>
+                        </li>
+                    </ul>
+                    <a href="@Url.Action("Index", "Cart")">Koszyk @Html.Action("GetCartItemsCount", "Cart")</a>
+                    <div id="login-header">
+                        @if (Request.IsAuthenticated)
                         {
-                            @Html.AntiForgeryToken()
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
 
+                                <div>
+                                    @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </div>
+                                <div>
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                                </div>
+                            }
+                        }
+                        else
+                        {
                             <div>
-                                @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                @Html.ActionLink("Zarejestruj", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
                             </div>
                             <div>
-                                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                                @Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
                             </div>
                         }
-                    }
-                    else
+                    </div>
+                </div>
+            </nav>
+        </header>*@
+
+    <header>
+        <div class="shadow-sm mb-4">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="nav-link nav-item fas fa-socks text-secondary Btn h2 border rounded" href="@Url.Content("~/")">
+                    </a>
+
+
+                    @if (Request.IsAuthenticated)
                     {
-                        <div>
-                            @Html.ActionLink("Zarejestruj", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+                        <div class="nav-item d-block d-xl-none d-lg-none">
+                            <a class=" nav-item fas fa-user text-secondary Btn h2" href="@Url.Action("Index", "Manage")">
+                            </a>
+
                         </div>
-                        <div>
-                            @Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+
+
+                        <div id="wozek_z_numerkim ">
+
+                            <a id="" class="nav-link nav-item fas fa-shopping-cart text-secondary Btn d-block d-xl-none d-lg-none h2"
+                               href="@Url.Action("Index", "Cart")">
+                                <div class="qty">@Html.Action("GetCartItemsCount", "Cart")</div>
+                            </a>
+
+
                         </div>
                     }
+
+                    <button class="navbar-toggler text-secondary" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="fas fa-bars"></span>
+                    </button>
+
+
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <form action="szukaj.php" method="post"
+                              class="form-inline mr-auto w-100 d-block d-xl-none d-lg-none">
+                            <input class="form-control w-75" type="search" placeholder="Wyszukaj..." name="szukaj"
+                                   aria-describedby="button-addon5">
+                            <button id="button-addon5" class="btn btn-outline-primary" type="submit"><i class="fa fa-search"></i></button>
+
+                        </form>
+
+                        <form action="szukaj.php" method="post"
+                              id="wyszukiwarka" class="form-inline mr-auto  w-50 d-none d-xl-block d-lg-block pl-5 ml-5">
+                            <input class="form-control w-75" type="search" placeholder="Wyszukaj..." name="szukaj"
+                                   aria-describedby="button-addon5">
+
+                            <button id="button-addon5" class="btn btn-outline-primary" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+
+
+
+
+                        <ul class="navbar-nav my-2 my-lg-0">
+                            <li class="nav-item">
+
+                            </li>
+
+
+
+
+                            @if (Request.IsAuthenticated)
+                            {
+                                <div id="wozek_z_numerkim" class="d-none d-xl-block d-lg-block">
+
+                                    <a id="myBtn" class="nav-link nav-item fas fa-shopping-cart text-secondary Btn h2" href="@Url.Action("Index", "Cart")">
+                                        <div class="qty">@Html.Action("GetCartItemsCount", "Cart")</div>
+
+                                        <a id="" class="nav-link nav-item fas fa-shopping-cart text-secondary Btn d-block d-xl-none d-lg-none"
+                                           href="@Url.Action("Index", "Cart")">
+                                        </a>
+                                            @*<div class="qty">@Html.Action("GetCartItemsCount", "Cart")</div>*@
+
+                                </div>
+
+                                <li class="nav-item mr-2 d-none d-xl-block d-lg-block">
+                                    <a class="nav-link fas fa-user h2" href="@Url.Action("Index", "Manage")"></a>
+                                    <a href="panel_uzytkownika.php">
+                                        <span id="user_nav"
+                                              class="h3 color-white float-right text-secondary"
+                                              style="padding-top: 8px"></span>
+                                    </a>
+                                </li>
+                            }
+                            <li class="nav-item pt-2">
+                                <span>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "h5 mr-3" })
+                                    }
+                                </span>
+                            </li>
+
+                            <li class="nav-item ">
+
+
+                                @if (Request.IsAuthenticated)
+                                {
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div>
+                                            <a class=" nav-link h4 btn btn-primary d-none d-xl-block d-lg-block mt-1" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                <li class="nav-item ">
+                                    @Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link h4 btn btn-primary d-none d-xl-block d-lg-block mt-1 mr-2" })
+                                </li>
+                                <li class="nav-item ">
+                                    @Html.ActionLink("Zarejestruj", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link h4 btn btn-primary d-none d-xl-block d-lg-block mt-1" })
+                                </li>
+                            }
+
+
+                            </ul>
+                        </div>
+
+
+
+                    </nav>
+                </div>
+        </header>
+
+        <div>
+            @RenderBody()
+        </div>
+
+        <!-- Footer -->
+        <div class="container-box">
+            <div class="map-responsive">
+                <iframe src="https://maps.google.com/maps?q=Aleja%20Jana%20Paw%C5%82a%20II%2030%2C%2093-570%20%C5%81%C3%B3d%C5%BA&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6 class="mb-4 text-primary h3">O nas</h6>
+                        <p class=" text-secondary">Nasza historia rozpoczęła się w 2020 roku z chwilą otwarcia pierwszego salonu stacjonarnego. Od tej pory nieustannie się rozwijamy, dzięki czemu staliśmy się ekspertami w branży komputerowej. Łączymy empatię i technologię, co pozwala nam lepiej rozumieć potrzeby Klientów.</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h6 class="mb-4 text-primary h3">Kontakt</h6>
+                        <p class=" text-secondary"><i class="fas fa-map-marker-alt h4"></i> Aleja Jana Pawła II 30, 93-570 Łódź</p>
+                        <p class=" text-secondary">
+                            <i class="fas fa-phone-alt h4"></i>
+                            +48 85 585 58 55
+                        </p>
+                        <p class=" text-secondary">
+                            <i class="fas fa-envelope h4"></i>
+                            shop@shop.com
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <h6 class="mb-4 text-primary h3">Social Media</h6>
+                        <a class="text-light text-decoration-none" href="#">
+                            <p class=" text-secondary">
+                                <i class="fab fa-facebook-square h4"></i>
+                                Facebook
+                            </p>
+                        </a>
+                        <a class="text-light text-decoration-none" href="#">
+                            <p class=" text-secondary">
+                                <i class="fab fa-instagram h4"></i>
+                                Instagram
+                            </p>
+                        </a>
+                        <a class="text-light text-decoration-none" href="#">
+                            <p class=" text-secondary">
+                                <i class="fab fa-twitter-square h4"></i>
+                                Twitter
+                            </p>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
+            <!-- /.container -->
+        </footer>
+        <!-- Footer -->
 
-    <div>
-        @RenderBody()
-    </div>
-
-    <!-- Footer -->
-    <footer class="page-footer font-small blue pt-4">
-
-        <!-- Footer Links -->
-        <div class="container-fluid text-center text-md-left">
-
-            <!-- Grid row -->
-            <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-6 mt-md-0 mt-3">
-
-                    <!-- Content -->
-                    <h5 class="text-uppercase">Footer Content</h5>
-                    <p>Here you can use rows and columns to organize your footer content.</p>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-        </div>
-        <!-- Footer Links -->
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">
-            © 2020 Copyright:
-            <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    @RenderSection("ScriptsBottom", required: false);
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        @RenderSection("ScriptsBottom", required: false);
 
 
-</body>
+    </body>
 </html>
