@@ -5,95 +5,91 @@
     Layout = "~/Views/Shared/_StoreLayout.cshtml";
 }
 
-<div>
+    <div class="container">
+        <div class="row">
+            <a class="nnav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("Index", "Manage")">Twoje dane</a>
+            <a class="nav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("OrdersList", "Manage")">Zamóweiania</a>
 
-    <hr />
-
-    <h2 class="manageHeader">Twoje zamówienia</h2>
-
-    <div>
-
+            @if (User.IsInRole("Admin"))
+            {
+                <a class="nav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("AddProduct","Manage")">Dodaj</a>
+            }
+        </div>
+        <hr>
+        <h2 style="margin-bottom: 30px">Zamówione produkty</h2>
         @if (Model.Any())
         {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="h4">Nr zamówienia</th>
+                        <th scope="col" class="h4">Data</th>
+                        <th scope="col" class="h4">Adres</th>
+                        <th scope="col" class="h4">Produkt</th>
+                        <th scope="col" class="h4">Uwagi</th>
+                        <th scope="col" class="h4">Cena</th>
+                        <th scope="col" class="h4">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr @if (order.StatusZamowienia == WebShop.Models.StatusZamowienia.New) { <text> class="newOrder" </text> }>
+                            <td class="align-middle">@order.ZamowienieId</td>
+                            <td class="align-middle ">@order.DataZamowienia.ToString("dd-MM-yyyy")</td>
+                            <td class="align-middle">
+                                @order.Imie @order.Nazwisko<br />
+                                @order.Adres<br />
+                                @order.KodPocztowy<br />
+                            </td>
 
-            <table id="orders-table">
-
-                @foreach (var order in Model)
-                {
-                    <tr @if (order.StatusZamowienia == WebShop.Models.StatusZamowienia.New) { <text> class="newOrder" </text> }>
-                        <td>
-                            <strong>Nr zamówienia: </strong>@order.ZamowienieId
-                        </td>
-                        <td>
-                            <strong>Data: </strong>
-                            @order.DataZamowienia.ToString("dd-MM-yyyy")
-                        </td>
-                        <td>
-                            <strong>Stan: </strong><br />
-
-                            @if (ViewBag.UserIsAdmin)
-                            {
-                                using (Html.BeginForm("ChangeOrderState", "Manage"))
+                            <td class="align-middle">
+                                @foreach (var orderItem in order.ZamowioneProdukty)
                                 {
-                                    @Html.HiddenFor(o => order.ZamowienieId)
-                                    @Html.EnumDropDownListFor(o => order.StatusZamowienia, new { @class = "orderstateddl" })
+                                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProduktId })">
+                                        <img class="card-img-top" alt="Skarpetka" style="height: 50px; width: 50px;" src="@Url.Content("~/Content/img/" + orderItem.Produkt.NazwaObrazka)" />
+                                        @orderItem.Produkt.Nazwa<br />
+                                    </a>
                                 }
-                            }
-                            else
-                            {
-                                @Html.DisplayFor(o => order.StatusZamowienia)
-                            }
+                            </td>
+                            <td class="align-middle">
+                                @foreach (var orderItem in order.ZamowioneProdukty)
+                                {
+                                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProduktId })">
+                                        <strong>sztuk: @orderItem.Ilosc</strong>
+                                    </a>
+                                }
+                            </td>
+                            <td class="align-middle">
+                                @foreach (var orderItem in order.ZamowioneProdukty)
+                                {
+                                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProduktId })">
+                                        <strong>łącznie: @(orderItem.Ilosc * @orderItem.CenaJednostkowa)  zł</strong>
+                                    </a>
+                                }
+                            </td>
+                            <td class="align-middle">@order.CenaZbiorcza zł</td>
+                            <td>
+                                <strong>Stan: </strong><br />
 
-                        </td>
-
-                        <td>
-                            <strong>Dane wysyłkowe:</strong><br />
-                            @order.Imie @order.Nazwisko<br />
-                            @order.Adres<br />
-                            @order.KodPocztowy<br />
-                        </td>
-                        <td>
-                            <strong>Uwagi: </strong><br />
-                            @order.Komentarz
-                        </td>
-                        <td>
-                            <strong>Łączny koszt:</strong> @order.CenaZbiorcza zł
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6">
-                            <section>
-                                <ul class="ThreeColumnsStaticCoversList large-cover-list-bottom">
-
-                                    @foreach (var orderItem in order.ZamowioneProdukty)
+                                @if (ViewBag.UserIsAdmin)
+                                {
+                                    using (Html.BeginForm("ChangeOrderState", "Manage"))
                                     {
-                                        <li>
-                                            <article>
-                                                <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProduktId })">
-                                                    <img class="album-cover" src="@Url.Content("~/Content/img/" + orderItem.Produkt.NazwaObrazka)" />
-                                                    <h1>
-                                                        @orderItem.Produkt.Nazwa<br />
-                                                        <strong>sztuk: @orderItem.Ilosc, łącznie: @(orderItem.Ilosc * @orderItem.CenaJednostkowa)  zł</strong>
-                                                    </h1>
-                                                </a>
-                                            </article>
-                                        </li>
+                                        @Html.HiddenFor(o => order.ZamowienieId)
+                                        @Html.EnumDropDownListFor(o => order.StatusZamowienia, new { @class = "orderstateddl" })
                                     }
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(o => order.StatusZamowienia)
+                                }
 
-                                </ul>
+                            </td>
 
-                            </section>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6"></td>
-                    </tr>
-
-                    <!-- Next order -->
-
-                }
-
-
+                        </tr>
+                    }
+                </tbody>
             </table>
         }
         else
@@ -102,11 +98,103 @@
                 Brak zamówień.
             </div>
         }
+        @*
+        <div>
+
+            @if (Model.Any())
+            {
+
+                <table id="orders-table">
+
+                    @foreach (var order in Model)
+                    {
+                        <tr @if (order.StatusZamowienia == WebShop.Models.StatusZamowienia.New) { <text> class="newOrder" </text> }>
+                            <td>
+                                <strong>Nr zamówienia: </strong>@order.ZamowienieId
+                            </td>
+                            <td>
+                                <strong>Data: </strong>
+                                @order.DataZamowienia.ToString("dd-MM-yyyy")
+                            </td>
+                            <td>
+                                <strong>Stan: </strong><br />
+
+                                @if (ViewBag.UserIsAdmin)
+                                {
+                                    using (Html.BeginForm("ChangeOrderState", "Manage"))
+                                    {
+                                        @Html.HiddenFor(o => order.ZamowienieId)
+                                        @Html.EnumDropDownListFor(o => order.StatusZamowienia, new { @class = "orderstateddl" })
+                                    }
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(o => order.StatusZamowienia)
+                                }
+
+                            </td>
+
+                            <td>
+                                <strong>Dane wysyłkowe:</strong><br />
+                                @order.Imie @order.Nazwisko<br />
+                                @order.Adres<br />
+                                @order.KodPocztowy<br />
+                            </td>
+                            <td>
+                                <strong>Uwagi: </strong><br />
+                                @order.Komentarz
+                            </td>
+                            <td>
+                                <strong>Łączny koszt:</strong> @order.CenaZbiorcza zł
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <section>
+                                    <ul class="ThreeColumnsStaticCoversList large-cover-list-bottom">
+
+                                        @foreach (var orderItem in order.ZamowioneProdukty)
+                                        {
+                                            <li>
+                                                <article>
+                                                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProduktId })">
+                                                        <img class="album-cover" src="@Url.Content("~/Content/img/" + orderItem.Produkt.NazwaObrazka)" />
+                                                        <h1>
+                                                            @orderItem.Produkt.Nazwa<br />
+                                                            <strong>sztuk: @orderItem.Ilosc, łącznie: @(orderItem.Ilosc * @orderItem.CenaJednostkowa)  zł</strong>
+                                                        </h1>
+                                                    </a>
+                                                </article>
+                                            </li>
+                                        }
+
+                                    </ul>
+
+                                </section>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6"></td>
+                        </tr>
+
+                        <!-- Next order -->
+
+                    }
+
+
+                </table>
+            }
+            else
+            {
+                <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                    Brak zamówień.
+                </div>
+            }
+        </div>
+
+*@
+
     </div>
-
-
-
-</div>
 
 @*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
 @System.Web.Optimization.Scripts.Render("~/bundles/jquery");
