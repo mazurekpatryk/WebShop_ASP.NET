@@ -282,7 +282,7 @@ namespace WebShop.Controllers
             else
             {
                 var userId = User.Identity.GetUserId();
-                userOrders = db.Zamowienia.Where(o => o.UzytkownikId == userId).Include("ZamowioneProdukty").
+                userOrders = db.Zamowienia.Where(o => o.UserId == userId).Include("ZamowioneProdukty").
                     OrderByDescending(o => o.DataZamowienia).ToArray();
             }
 

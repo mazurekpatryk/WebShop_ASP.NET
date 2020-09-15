@@ -102,7 +102,7 @@ namespace WebShop.Infrastructure
             var cart = this.GetCart();
 
             newOrder.DataZamowienia = DateTime.Now;
-            // newOrder.UserId = userId;
+            newOrder.UserId = userId;
 
             this.Db.Zamowienia.Add(newOrder);
 

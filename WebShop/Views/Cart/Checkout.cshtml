@@ -1,0 +1,86 @@
+﻿@model WebShop.Models.Zamowienie
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+
+<div id="productlist-content">
+
+    @*@Html.Action("GMenuKategori", "Store")
+
+    <div id="productlist-rightsection">
+        <div id="breadcrumb-section">
+            <img src="../Content/Images/home-small.png" />
+            @Html.MvcSiteMap().SiteMapPath()
+        </div>
+
+        <section class="content-section">
+            <div class="section-header" style="margin-bottom: 0px;">
+                <h1>Uzupełnij dane zamówienia</h1>
+            </div>*@
+
+            @*@{ Html.EnableClientValidation(); }*@
+
+            @using (@Html.BeginForm("Checkout", "Cart"))
+            {
+                <table id="checkout-address-table">
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Imie, "Imię:")</td>
+                        <td>@Html.TextBoxFor(o => o.Imie)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Imie)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Nazwisko, "Nazwisko")</td>
+                        <td>@Html.TextBoxFor(o => o.Nazwisko)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Nazwisko)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Adres, "Adres")</td>
+                        <td>@Html.TextBoxFor(o => o.Adres)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Adres)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.KodPocztowy, "Kod i miasto")</td>
+                        <td>@Html.TextBoxFor(o => o.KodPocztowy)</td>
+                        <td>@Html.ValidationMessageFor(o => o.KodPocztowy)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.NumerTelefonu, "Numer telefonu")</td>
+                        <td>@Html.TextBoxFor(o => o.NumerTelefonu)</td>
+                        <td>@Html.ValidationMessageFor(o => o.NumerTelefonu)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Email, "Adres e-mail")</td>
+                        <td>@Html.TextBoxFor(o => o.Email)</td>
+                        <td>@Html.ValidationMessageFor(o => o.Email)</td>
+                    </tr>
+                    <tr>
+                        <td><label for="comment">Uwagi</label></td>
+                        <td>
+                            <textarea cols="40" rows="3" name="comment">@Model.Komentarz</textarea>
+                        </td>
+                    </tr>
+                </table>
+
+                @Html.ValidationSummary()
+
+                <hr style="margin-bottom: 50px;" />
+
+                <div class="section-button-container">
+                    <a class="button-link" href="">Wróć</a>
+                    <input type="submit" class="button-link" style="" value="Potwierdź" />
+                </div>
+            }
+
+        @*</section>*@
+
+    </div>
+@*</div>*@
+
+@section ScriptsBottom
+{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
