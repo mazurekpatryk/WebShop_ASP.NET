@@ -8,6 +8,12 @@
 <a href="@Url.Action("Index", "Home")">Start</a>
 <a href="@Url.Action("Index", "Manage")">Twoje dane</a>
 <a href="@Url.Action("OrdersList", "Manage")">Zamóweiania</a>
+
+@if (User.IsInRole("Admin"))
+{
+     <a href="@Url.Action("AddProduct","Manage")">Dodaj</a>
+}
+
 @using (@Html.BeginForm("ChangeProfile", "Manage"))
 {
     @Html.AntiForgeryToken()

@@ -45,7 +45,7 @@
                         <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "regulamin" })">Regulamin</a>
                     </li>
                 </ul>
-                <a>Koszyk @Html.Action("GetCartItemsCount", "Cart")</a>
+                <a href="@Url.Action("Index", "Cart")">Koszyk @Html.Action("GetCartItemsCount", "Cart")</a>
                 <div id="login-header">
                     @if (Request.IsAuthenticated)
                     {

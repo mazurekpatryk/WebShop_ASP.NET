@@ -11,11 +11,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebShop.Models;
-using WebShop.ViewModels;
+
 using WebShop.App_Start;
 using WebShop.DAL;
 using WebShop.Infrastructure;
 using MailKit;
+using WebShop.ViewModels;
 
 namespace WebShop.Controllers
 {
@@ -367,30 +368,42 @@ namespace WebShop.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AddProduct(int? albumId, bool? confirmSuccess)
         {
-            if (albumId.HasValue)
-                ViewBag.EditMode = true;
-            else
-                ViewBag.EditMode = false;
-
-            var result = new EditProductViewModel();
-            var genres = db.Kategorie.ToArray();
-            result.Kategorie = genres;
-            result.ConfirmSuccess = confirmSuccess;
-
             Produkt a;
-
-            if (!albumId.HasValue)
+            
+            if (albumId.HasValue)
             {
-                a = new Produkt();
-            }
-            else
-            {
+                ViewBag.EditMode = true;
                 a = db.Produkty.Find(albumId);
             }
+            else
+            {
+                ViewBag.EditMode = false;
+                a = new Produkt();
+            }
 
+            var result = new EditProductViewModel();
+
+            result.Kategorie = db.Kategorie.ToList();
             result.Produkt = a;
+            result.ConfirmSuccess = confirmSuccess;
+            //var genres = db.Kategorie.ToArray();
+            //result.Kategorie = genres;
+            //result.ConfirmSuccess = confirmSuccess;
+
+
+            //if (!albumId.HasValue)
+            //{
+            //    a = new Produkt();
+            //}
+            //else
+            //{
+            //    a = db.Produkty.Find(albumId);
+            //}
+
+            //result.Produkt = a;
 
             return View(result);
+            
         }
 
         [HttpPost]
@@ -409,49 +422,59 @@ namespace WebShop.Controllers
                 // Creating new entry
 
                 var f = Request.Form;
-                // Verify that the user selected a file
-                if (file != null && file.ContentLength > 0)
-                {
-                    // Generate filename
+                    // Verify that the user selected a file
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        if (ModelState.IsValid)
+                        {
 
-                    var fileExt = Path.GetExtension(file.FileName);
-                    var filename = Guid.NewGuid() + fileExt;
+                            // Generate filename
 
-                    var path = Path.Combine(Server.MapPath(AppConfig.PhotosFolderRelative), filename);
-                    file.SaveAs(path);
+                            var fileExt = Path.GetExtension(file.FileName);
+                            var filename = Guid.NewGuid() + fileExt;
 
-                    // Save info to DB
-                    model.Produkt.NazwaObrazka = filename;
-                    model.Produkt.DataDodania = DateTime.Now;
+                            var path = Path.Combine(Server.MapPath(AppConfig.PhotosFolderRelative), filename);
+                            file.SaveAs(path);
 
-                    db.Entry(model.Produkt).State = EntityState.Added;
-                    db.SaveChanges();
+                            // Save info to DB
+                            model.Produkt.NazwaObrazka = filename;
+                            model.Produkt.DataDodania = DateTime.Now;
 
-                    return RedirectToAction("AddProduct", new { confirmSuccess = true });
+                            db.Entry(model.Produkt).State = EntityState.Added;
+                            db.SaveChanges();
+
+                            return RedirectToAction("AddProduct", new { confirmSuccess = true });
+                        }
+                        else
+                        {
+                            var genres = db.Kategorie.ToArray();
+                            model.Kategorie = genres;
+                            return View(model);
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Nie wskazano pliku.");
+                        var genres = db.Kategorie.ToArray();
+                        model.Kategorie = genres;
+                        return View(model);
+                    }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Nie wskazano pliku.");
-                    var genres = db.Kategorie.ToArray();
-                    model.Kategorie = genres;
-                    return View(model);
-                }
-            }
 
         }
 
-        public ActionResult HideProduct(int albumId)
+        public ActionResult HideProduct(int produktId)
         {
-            var album = db.Produkty.Find(albumId);
+            var album = db.Produkty.Find(produktId);
             album.UkrytyProdukt = true;
             db.SaveChanges();
 
             return RedirectToAction("AddProduct", new { confirmSuccess = true });
         }
 
-        public ActionResult UnhideProduct(int albumId)
+        public ActionResult UnhideProduct(int produktId)
         {
-            var album = db.Produkty.Find(albumId);
+            var album = db.Produkty.Find(produktId);
             album.UkrytyProdukt = false;
             db.SaveChanges();
 

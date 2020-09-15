@@ -56,10 +56,10 @@ namespace WebShop.ViewModels
         public string ConfirmPassword { get; set; }
     }
 
-    public class EditProductViewModel
+/*    public class EditProductViewModel
     {
         public Produkt Produkt{ get; set; }
         public IEnumerable<Kategoria> Kategorie{ get; set; }
         public bool? ConfirmSuccess { get; set; }
-    }
+    }*/
 }
