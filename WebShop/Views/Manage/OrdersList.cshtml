@@ -5,100 +5,103 @@
     Layout = "~/Views/Shared/_StoreLayout.cshtml";
 }
 
-    <div class="container">
-        <div class="row">
-            <a class="nnav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("Index", "Manage")">Twoje dane</a>
-            <a class="nav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("OrdersList", "Manage")">Zamóweiania</a>
+<div class="container">
+    <div class="row">
+        <a class="nnav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("Index", "Manage")">Twoje dane</a>
+        <a class="nav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("OrdersList", "Manage")">Zamóweiania</a>
 
-            @if (User.IsInRole("Admin"))
-            {
-                <a class="nav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("AddProduct","Manage")">Dodaj</a>
-            }
-        </div>
-        <hr>
-        <h2 style="margin-bottom: 30px">Zamówione produkty</h2>
-        @if (Model.Any())
+        @if (User.IsInRole("Admin"))
         {
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col" class="h4">Nr zamówienia</th>
-                        <th scope="col" class="h4">Data</th>
-                        <th scope="col" class="h4">Adres</th>
-                        <th scope="col" class="h4">Produkt</th>
-                        <th scope="col" class="h4">Uwagi</th>
-                        <th scope="col" class="h4">Cena</th>
-                        <th scope="col" class="h4">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var order in Model)
-                    {
-                        <tr @if (order.StatusZamowienia == WebShop.Models.StatusZamowienia.New) { <text> class="newOrder" </text> }>
-                            <td class="align-middle">@order.ZamowienieId</td>
-                            <td class="align-middle ">@order.DataZamowienia.ToString("dd-MM-yyyy")</td>
-                            <td class="align-middle">
-                                @order.Imie @order.Nazwisko<br />
-                                @order.Adres<br />
-                                @order.KodPocztowy<br />
-                            </td>
+            <a class="nav-link h4 btn btn-primary mt-1 mr-2 w-25" href="@Url.Action("AddProduct","Manage")">Dodaj</a>
+        }
+    </div>
+    <hr>
+    <h2 style="margin-bottom: 30px">Zamówione produkty</h2>
+    @if (Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="h4">Nr zamówienia</th>
+                    <th scope="col" class="h4">Data</th>
+                    <th scope="col" class="h4">Adres</th>
+                    <th scope="col" class="h4">Produkt</th>
+                    <th scope="col" class="h4">Uwagi</th>
+                    <th scope="col" class="h4">Cena</th>
+                    <th scope="col" class="h4">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr @if (order.StatusZamowienia == WebShop.Models.StatusZamowienia.New) { <text> class="newOrder" </text> }>
+                        <td class="align-middle">@order.ZamowienieId</td>
+                        <td class="align-middle ">@order.DataZamowienia.ToString("dd-MM-yyyy")</td>
+                        <td class="align-middle">
+                            @order.Imie @order.Nazwisko<br />
+                            @order.Adres<br />
+                            @order.KodPocztowy<br />
+                        </td>
 
-                            <td class="align-middle">
-                                @foreach (var orderItem in order.ZamowioneProdukty)
-                                {
-                                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProduktId })">
-                                        <img class="card-img-top" alt="Skarpetka" style="height: 50px; width: 50px;" src="@Url.Content("~/Content/img/" + orderItem.Produkt.NazwaObrazka)" />
-                                        @orderItem.Produkt.Nazwa<br />
-                                    </a>
-                                }
-                            </td>
-                            <td class="align-middle">
-                                @foreach (var orderItem in order.ZamowioneProdukty)
-                                {
-                                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProduktId })">
-                                        <strong>sztuk: @orderItem.Ilosc</strong>
-                                    </a>
-                                }
-                            </td>
-                            <td class="align-middle">
+                        <td class="align-middle">
+                            @foreach (var orderItem in order.ZamowioneProdukty)
+                            {
+                                <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProduktId })">
+                                    @*<img class="card-img-top" alt="Skarpetka" style="height: 50px; width: 50px;" src="@Url.Content("~/Content/img/" + orderItem.Produkt.NazwaObrazka)" />*@
+                                    @orderItem.Produkt.Nazwa<br />
+                                </a>
+                            }
+                        </td>
+                        <td class="align-middle">
+                            @foreach (var orderItem in order.ZamowioneProdukty)
+                            {
+
+                                <strong>sztuk: @orderItem.Ilosc</strong><br />
+
+                            }
+                        </td>
+                        @*<td class="align-middle">
+                                @order.Komentarz
+                            </td>*@
+                        @*<td class="align-middle">
                                 @foreach (var orderItem in order.ZamowioneProdukty)
                                 {
                                     <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = orderItem.ProduktId })">
                                         <strong>łącznie: @(orderItem.Ilosc * @orderItem.CenaJednostkowa)  zł</strong>
                                     </a>
                                 }
-                            </td>
-                            <td class="align-middle">@order.CenaZbiorcza zł</td>
-                            <td>
-                                <strong>Stan: </strong><br />
+                            </td>*@
+                        <td class="align-middle">@order.CenaZbiorcza zł</td>
+                        <td class="align-middle">
 
-                                @if (ViewBag.UserIsAdmin)
+
+                            @if (ViewBag.UserIsAdmin)
+                            {
+                                using (Html.BeginForm("ChangeOrderState", "Manage"))
                                 {
-                                    using (Html.BeginForm("ChangeOrderState", "Manage"))
-                                    {
-                                        @Html.HiddenFor(o => order.ZamowienieId)
-                                        @Html.EnumDropDownListFor(o => order.StatusZamowienia, new { @class = "orderstateddl" })
-                                    }
+                                    @Html.HiddenFor(o => order.ZamowienieId)
+                                    @Html.EnumDropDownListFor(o => order.StatusZamowienia, new { @class = "orderstateddl" })
                                 }
-                                else
-                                {
-                                    @Html.DisplayFor(o => order.StatusZamowienia)
-                                }
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(o => order.StatusZamowienia)
+                            }
 
-                            </td>
+                        </td>
 
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
-                Brak zamówień.
-            </div>
-        }
-        @*
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+            Brak zamówień.
+        </div>
+    }
+    @*
         <div>
 
             @if (Model.Any())
@@ -192,9 +195,9 @@
             }
         </div>
 
-*@
+    *@
 
-    </div>
+</div>
 
 @*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
 @System.Web.Optimization.Scripts.Render("~/bundles/jquery");

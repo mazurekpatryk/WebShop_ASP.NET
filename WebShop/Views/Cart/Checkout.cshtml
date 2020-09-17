@@ -5,78 +5,78 @@
 }
 
 
-<div id="productlist-content">
+    <div id="productlist-content" class="container">
 
-    @*@Html.Action("GMenuKategori", "Store")
+        @Html.Action("GMenuKategori", "Store")
 
-    <div id="productlist-rightsection">
-        <div id="breadcrumb-section">
-            <img src="../Content/Images/home-small.png" />
-            @Html.MvcSiteMap().SiteMapPath()
+        <div id="productlist-rightsection">
+            <div id="breadcrumb-section">
+                @Html.MvcSiteMap().SiteMapPath()
+            </div>
+
+        <hr>
+            <h2 style="margin-bottom: 30px" class="mt-3">Adres wysyłki</h2>
         </div>
-
-        <section class="content-section">
-            <div class="section-header" style="margin-bottom: 0px;">
-                <h1>Uzupełnij dane zamówienia</h1>
-            </div>*@
-
-            @*@{ Html.EnableClientValidation(); }*@
-
+        @{ Html.EnableClientValidation(); }
+        <div class="d-flex justify-content-center bd-highlight">
             @using (@Html.BeginForm("Checkout", "Cart"))
             {
-                <table id="checkout-address-table">
+                <table id="checkout-address-table table table-borderless mr-auto ml-auto">
                     <tr>
                         <td>@Html.LabelFor(o => o.Imie, "Imię:")</td>
-                        <td>@Html.TextBoxFor(o => o.Imie)</td>
+                        <td>@Html.TextBoxFor(o => o.Imie, new { @class = "form-control" })</td>
                         <td>@Html.ValidationMessageFor(o => o.Imie)</td>
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(o => o.Nazwisko, "Nazwisko")</td>
-                        <td>@Html.TextBoxFor(o => o.Nazwisko)</td>
+                        <td>@Html.TextBoxFor(o => o.Nazwisko, new { @class = "form-control" })</td>
                         <td>@Html.ValidationMessageFor(o => o.Nazwisko)</td>
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(o => o.Adres, "Adres")</td>
-                        <td>@Html.TextBoxFor(o => o.Adres)</td>
+                        <td>@Html.TextBoxFor(o => o.Adres, new { @class = "form-control" })</td>
                         <td>@Html.ValidationMessageFor(o => o.Adres)</td>
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(o => o.KodPocztowy, "Kod i miasto")</td>
-                        <td>@Html.TextBoxFor(o => o.KodPocztowy)</td>
+                        <td>@Html.TextBoxFor(o => o.KodPocztowy, new { @class = "form-control" })</td>
                         <td>@Html.ValidationMessageFor(o => o.KodPocztowy)</td>
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(o => o.NumerTelefonu, "Numer telefonu")</td>
-                        <td>@Html.TextBoxFor(o => o.NumerTelefonu)</td>
+                        <td>@Html.TextBoxFor(o => o.NumerTelefonu, new { @class = "form-control" })</td>
                         <td>@Html.ValidationMessageFor(o => o.NumerTelefonu)</td>
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(o => o.Email, "Adres e-mail")</td>
-                        <td>@Html.TextBoxFor(o => o.Email)</td>
+                        <td>@Html.TextBoxFor(o => o.Email, new { @class = "form-control" })</td>
                         <td>@Html.ValidationMessageFor(o => o.Email)</td>
                     </tr>
                     <tr>
                         <td><label for="comment">Uwagi</label></td>
                         <td>
-                            <textarea cols="40" rows="3" name="comment">@Model.Komentarz</textarea>
+                            <textarea class="form-control " cols="40" rows="3" name="comment">@Model.Komentarz</textarea>
                         </td>
                     </tr>
                 </table>
 
-                @Html.ValidationSummary()
+                @*@Html.ValidationSummary()*@
 
-                <hr style="margin-bottom: 50px;" />
 
-                <div class="section-button-container">
-                    <a class="button-link" href="">Wróć</a>
-                    <input type="submit" class="button-link" style="" value="Potwierdź" />
+
+                <div class="section-button-container row">
+                    <a class="nav-link h4 btn btn-primary w-25 button-link mr-2" href="">Wróć</a>
+                    <input class="nav-link h4 btn btn-primary w-50 button-link" type="submit" style="" value="Potwierdź" />
                 </div>
+
             }
 
-        @*</section>*@
 
+
+        </div>
+        <hr>
     </div>
-@*</div>*@
+
 
 @section ScriptsBottom
 {

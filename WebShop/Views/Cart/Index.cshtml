@@ -14,7 +14,7 @@
         <thead>
             <tr @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="" </text>  } else { <text> class="d-none" </text> }>
                 <th scope="col">Produkt</th>
-                <th scope="col"></th>
+                <th scope="col">Nazwa</th>
                 <th scope="col">Ilość</th>
                 <th scope="col">Cena</th>
                 <th scope="col" style="text-align: center;">Usuń</th>
@@ -34,10 +34,7 @@
                     <td class="align-middle pl-4"><span id="cart-item-count-@cartItem.Produkt.ProduktId">@cartItem.Quantity</span></td>
                     <td class="align-middle">@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
                     <td class="align-middle pb-4">
-                        <div class="align-middle">
-                            <a data-id="@cartItem.Produkt.ProduktId" href="#" class="w-100 d-inline btn btn-primary removeProduct">Usuń</a>
-                        </div>
-
+                            <a data-id="@cartItem.Produkt.ProduktId" href="#" class="w-100 d-inline btn btn-primary removeProduct float-right"><i class="fa fa-times" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             }

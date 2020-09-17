@@ -43,6 +43,21 @@
                 <div>
                     <table id="albumedit-address-table">
                         <tr>
+                            Dodaj zdjęcie produktu:
+                        </tr>
+                        @if (ViewBag.EditMode == null || !ViewBag.EditMode)
+                        {
+                            <tr>
+                                <td colspan="3">
+
+                                    <div class="upload">
+                                        <input type="file" name="file" />
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                        <tr>
                             <td>@Html.LabelFor(o => o.Produkt.Nazwa, "Nazwa:")</td>
                             <td>@Html.TextBoxFor(o => o.Produkt.Nazwa, new { @class = "form-control" })</td>
                             <td>@Html.ValidationMessageFor(o => o.Produkt.Nazwa)</td>
@@ -62,18 +77,6 @@
                             <td>@Html.TextBoxFor(o => o.Produkt.Cena, new { @class = "form-control" })</td>
                             <td>@Html.ValidationMessageFor(o => o.Produkt.Cena)</td>
                         </tr>
-                        @if (ViewBag.EditMode == null || !ViewBag.EditMode)
-                        {
-                            <tr>
-                                <td colspan="3">
-
-                                    <div class="upload">
-                                        <input type="file" name="file" />
-                                    </div>
-
-                                </td>
-                            </tr>
-                        }
                         <tr>
 
 

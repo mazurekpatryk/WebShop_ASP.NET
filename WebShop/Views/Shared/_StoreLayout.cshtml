@@ -21,60 +21,7 @@
 
 </head>
 <body>
-    @*<header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="@Url.Content("~/")">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="@Url.Content("~/")">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "onas" })">O nas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "kontakt" })">Kontakt</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "wysylka" })">Wysyłka</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("StaticContent", "Home", new { viewname = "regulamin" })">Regulamin</a>
-                        </li>
-                    </ul>
-                    <a href="@Url.Action("Index", "Cart")">Koszyk @Html.Action("GetCartItemsCount", "Cart")</a>
-                    <div id="login-header">
-                        @if (Request.IsAuthenticated)
-                        {
-                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                            {
-                                @Html.AntiForgeryToken()
-
-                                <div>
-                                    @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                                </div>
-                                <div>
-                                    <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div>
-                                @Html.ActionLink("Zarejestruj", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-                            </div>
-                            <div>
-                                @Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-                            </div>
-                        }
-                    </div>
-                </div>
-            </nav>
-        </header>*@
 
     <header>
         <div class="shadow-sm mb-4">
@@ -112,7 +59,7 @@
 
 
                     <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                        <form action="szukaj.php" method="post"
+                        <form action="@Url.Content("~/")" method="post"
                               class="form-inline mr-auto w-100 d-block d-xl-none d-lg-none">
                             <input class="form-control w-75" type="search" placeholder="Wyszukaj..." name="szukaj"
                                    aria-describedby="button-addon5">
@@ -120,7 +67,7 @@
 
                         </form>
 
-                        <form action="szukaj.php" method="post"
+                        <form action="@Url.Content("~/")" method="post"
                               id="wyszukiwarka" class="form-inline mr-auto  w-50 d-none d-xl-block d-lg-block pl-5 ml-5">
                             <input class="form-control w-75" type="search" placeholder="Wyszukaj..." name="szukaj"
                                    aria-describedby="button-addon5">
